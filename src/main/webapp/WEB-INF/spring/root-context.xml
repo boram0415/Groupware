@@ -11,11 +11,10 @@
 	<bean id="dataSource" 
 		  class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		  destroy-method="close">
-		  
-		  <property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
-		  <property name="jdbcUrl" value="jdbc:oracle:thin:@221.164.9.200:41521:xe" />
-		  <property name="user" value="c##koyote" />
-		  <property name="password" value="it" />
+		  <property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
+		  <property name="jdbcUrl" value="jdbc:mysql://121.174.99.113:3306/KOYOTE?useSSL=false&amp;serverTimezone=UTC" />
+		  <property name="user" value="account" />
+		  <property name="password" value="Dufcme90!!" />
 		  <property name="maxPoolSize" value="100" />
 		  <property name="maxIdleTime" value="600" />
 		  <property name="idleConnectionTestPeriod" value="300" />

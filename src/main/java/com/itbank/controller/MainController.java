@@ -51,7 +51,7 @@ public class MainController {
 	private WorkFlowService workSev;
 	
 	@GetMapping("")
-	public String main(HttpSession session) 	{
+	public String main(HttpSession session) {
 		
 		List<NoticeDTO> noticeList = ns.getNoticeList();
 		session.setAttribute("noticeList", noticeList);
@@ -81,6 +81,7 @@ public class MainController {
 	// login (login.jsp)
 	@GetMapping("login")
 	public String login(HttpSession session) {
+		
 		if(session.getAttribute("login") != null) {
 			return "redirect:/";
 		}
@@ -90,11 +91,8 @@ public class MainController {
 	
 	@PostMapping("login")
 	public ModelAndView loginCheck(EmployeeDTO emp , HttpSession session) { 
-		
 		ModelAndView mav = new ModelAndView("login");
-		
 		String msg = "아이디 또는 비밀번호가 일치하지 않습니다.";
-		
 		int row = es.MemberLogin(emp,session);
 		
 		if(row == 1 ) {
@@ -102,9 +100,7 @@ public class MainController {
 			return mav;
 		}
 		mav.addObject("msg", msg);
-		
 		return mav;
-		
 	}
 	
 	// logout (header.jsp)

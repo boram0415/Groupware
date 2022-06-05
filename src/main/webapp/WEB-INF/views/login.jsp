@@ -10,10 +10,8 @@
 
 <!-- cpath 경로 -->
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
-
 <!-- css 파일  -->
 <link rel="stylesheet" href="${cpath}/css/login.css" type="text/css">
-
 <!-- jQuery-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- icon site -->
@@ -46,7 +44,7 @@
 								<img src="${cpath}/img/login/mail.png">
 							</div>
 							<div class="ema-inp">
-								<input id="input_login_id" name="emp_num" type="text" class="inpbox1" value="4444445"
+								<input id="input_login_id" name="emp_num" type="text" class="inpbox1" value="2030055"
 									placeholder="아이디" autocomplete="off">
 							</div>
 						</div>	
@@ -61,7 +59,7 @@
 								<img src="${cpath}/img/login/key.png">
 							</div>
 							<div class="ema-inp">
-								<input id="input_login_pw" name="emp_pw" type="password" class="inpbox1" value="4444445"
+								<input id="input_login_pw" name="emp_pw" type="password" class="inpbox1" value="2030055"
 									placeholder="비밀번호">
 							</div>
 						</div>

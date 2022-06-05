@@ -1096,6 +1096,7 @@
       	}
       
         weekSchedule();
+        
         const allWorkHandler = function(){
         	
         	const url = '${cpath}/allWork/' + sql;
@@ -1138,16 +1139,15 @@
         	fetch(url,opt)
         	.then(resp=>resp.text())
         	.then(text=>{
-        		//console.log('exceed text : ' + text);
         		if(text === '0'){
         			m3.innerText = '없음';
         			chrhkrmsan.innerText = '없음';
         		}else{
-        			m3.innerText = text + ' 시간';
-        			chrhkrmsan.innerText = text;
+//         			m3.innerText = text + '시간';
+        			m3.innerText = '0시간';
+        			chrhkrmsan.innerText = '있음';
         		}
         	});
-        	//console.log('exceedsql : ' + sql);
         }
        	exceed();
         function mover(){	

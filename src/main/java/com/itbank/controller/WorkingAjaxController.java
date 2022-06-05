@@ -119,15 +119,21 @@ public class WorkingAjaxController {
 		@GetMapping(value="allWork/{sql}", produces = "application/text;charset=utf8")
 		public String allWork(@PathVariable String sql ,HttpSession session) {
 			
-		//	System.out.println("sql 잘들어왔나 : " + sql);
-			
 			String[] arr = sql.split(",");
+			System.out.println("====");
+			System.out.println(sql);
+			System.out.println(arr);
+			System.out.println("====");
 			
 			String emp_num = arr[4];
 			String year = arr[0];
 			String month = arr[1];
 			String firstDay = arr[2];
 			String lastDay = arr[3];
+			
+			if(firstDay.indexOf("-") > -1 ) {
+				firstDay = firstDay.replaceAll("-", "");
+			}
 			
 			String firstStart = year + "/" + month + "/" + firstDay;
 			String lastStart = year + "/" + month + "/" + lastDay;
@@ -150,18 +156,14 @@ public class WorkingAjaxController {
 		// 인사팀 직원들 정보 뽑아오는거
 		@GetMapping(value="memberInfo/{dept}", produces = "application/json;charset=utf8")
 		public String memberInfo(@PathVariable String dept) throws JsonProcessingException {
-//			System.out.println("합치는 데프트 : " + dept);
 			List<EmployeeDTO> list = es.getMembers(dept);
 			String data = mapper.writeValueAsString(list);
-//			System.out.println("합치는 데이터 : " + data);
 			
 			return data;
 		}
 		// 인사팀의 달별로 출근시간 퇴근시간 뽑아오는 거
 		@GetMapping(value="memz{sql}",produces = "application/json;charset=utf8")
 		public String memz(@PathVariable String sql) throws JsonProcessingException {
-//			System.out.println("ㅇㅇㅇㅇㅇㅇㅇ");
-//			System.out.println("sql : " + sql);
 			
 			DateDTO dto = new DateDTO();
 			
