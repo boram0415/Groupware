@@ -6,8 +6,8 @@
 <mapper namespace="com.itbank.employee.EmployeeDAO">
 	
 	<select id="selectList" resultType="emp">
-		select D.dept_name, E.* from department_table D, employee_table E
-    		where D.dept_name = E.emp_dept and D.dept_no = #{idx}
+		select d.dept_name, e.* from department_table d, employee_table e
+    		where d.dept_name = e.emp_dept and d.dept_no = #{idx}
 	</select>
 	
 	<select id="selectListAll" resultType="emp">
@@ -15,10 +15,10 @@
 	</select>
 	
 	<select id="searchList" resultType="emp">
-		select D.dept_name, E.* from department_table D, employee_table E
-		    where D.dept_name = E.emp_dept
-		        and ( E.emp_name like(#{search})
-		        or D.dept_name like(#{search}) )
+		select d.dept_name, e.* from department_table d, employee_table e
+		    where d.dept_name = e.emp_dept
+		        and ( e.emp_name like(#{search})
+		        or d.dept_name like(#{search}) )
 	</select>
 
 	<select id="countEmpYear" resultType="int">
@@ -38,19 +38,19 @@
 	
 	<!-- modal -->
 	<select id="selectMember" parameterType="int" resultType="emp">
-		select * from employee_table E join department_table D 
+		select * from employee_table e join department_table d 
 			on e.emp_dept = d.dept_name 
 				where e.emp_num = #{num}
 	</select>
 	
 	<update id="profileUpload" parameterType="emp">
 		update employee_table set  emp_profile = #{emp_profile}
- 			WHERE emp_num = #{emp_num}
+ 			where emp_num = #{emp_num}
 	</update>
 	
 	<update id="fileNameupload" parameterType="emp">
 		update employee_table set emp_profile = #{emp_profile}
- 			WHERE emp_num = #{emp_num}
+ 			where emp_num = #{emp_num}
 	</update>
 	
 	<select id="MemberLogin" parameterType="emp" resultType="emp">
@@ -68,7 +68,7 @@
 	<update id="memberInsert" parameterType="emp">
 		update employee_table set emp_num = #{emp_num} 
 			, emp_info_change = #{emp_info_change} , start_day = #{start_day} , emp_dept = #{emp_dept}
-				, emp_pos = #{emp_pos} where emp_num = #{emp_priorNum}
+				, emp_pos = #{emp_pos} where emp_num = #{emp_priornum}
 	</update>
 	
 	<update id="memberDeInsert">
@@ -83,7 +83,7 @@
 	</select>
 	
 	<select id="RemainingVaction" resultType="int" parameterType="string">
-		select 365 - (to_date(#{getTime}, 'yymmdd') - to_date('210101', 'yymmdd')+1) from dual
+		select 365 - (to_date(#{gettime}, 'yymmdd') - to_date('210101', 'yymmdd')+1) from dual
 	</select>
 	
 	<select id="getHelloTeam" resultType="String">

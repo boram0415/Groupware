@@ -11,8 +11,8 @@
 	</insert>
 	
 	<select id="selectNoticeAll" resultType="noti">
-		select N.*, E.emp_profile from notice_table N, employee_table E
-			where N.del = 0 and N.emp_num = E.emp_num
+		select n.*, e.emp_profile from notice_table n, employee_table e
+			where n.del = 0 and n.emp_num = e.emp_num
 			order by createdate desc
 	</select>
 	

@@ -20,10 +20,10 @@ public class Hash {
 			
 		} catch (NoSuchAlgorithmException e) {
 			System.out.println("그런 알고리즘은 없습니다 : " + e);
-//			e.printStackTrace();
+			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
 			System.out.println("그런 인코딩은 없습니다 : " + e);
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 		
 		return null;
@@ -34,7 +34,7 @@ public class Hash {
 	}
 	
 	public static void main(String[] args) {
-		String userpw = "1231231";
+		String userpw = "2140001";
 		String test1 = getHash(userpw);
 		System.out.println(test1);
 		

@@ -12,7 +12,7 @@
 	</select>
 	
 	<update id="updateFileName" parameterType="string">
-		update company_table set com_profile = #{fileName}
+		update company_table set com_profile = #{filename}
 	</update>
 	
 	<select id="callImgName" resultType="String">

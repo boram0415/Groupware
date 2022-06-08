@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 
@@ -27,7 +27,7 @@
 					<form id="notiInsertForm" method="POST">
 						<div class="top_write_notice">
 							<textarea class="txtarea_notice" name="contents" rows="2" 
-								placeholder="공지사항을 입력해주세요.&#13;&#10;관리자만 입력할 수 있습니다."></textarea>
+								placeholder="공지사항을 입력해주세요.관리자만 입력할 수 있습니다."></textarea>
 						</div>
 						<div class="bot_write_notice">
 							<div class="box_btn">
@@ -40,101 +40,101 @@
 					</form>
 					</div>
 					
-					<c:if test="${fn:length(noticeList) == 0}">
-						<div id="notice_empty" class="box box_empty">	<!-- 공지 리스트 추가 시 empty div hidden 처리 -->
-							<div class="icon_notice"><i class="fas fa-seedling"></i></div>
-							<div class="txt_notice">아직 작성된 공지사항이 없어요.</div>
-							<div class="txt_sub">앞으로 좋은 소식들만 전달되기 바랍니다!</div>
-						</div>
-					</c:if>
-					<div id="list_notice_content">
-					<c:forEach var="noti" items="${noticeList}">
-						<div class="box box_list_noti">
-							<div class="head_noti">
-								<div>
-									<div class="img_profile">
-										<img src="${serverPath }/${noti.emp_profile}" alt="profile">
-									</div>
-									<div>
-										<div class="txt_name">${noti.emp_name}</div>
-										<div class="time_notice">${noti.createDate.toLocaleString().substring(0,10)} · ${noti.createDate.toLocaleString().substring(10,18) }</div>
-									</div>
-								</div>
-								<button id="noti_${noti.seq }" class="btn_noti hidden">
-									<div class="img_trash"><i class="fas fa-trash-alt"></i></div>
-								</button>
-							</div>
-							<div class="txt_noti">${noti.contents }</div>
-						</div>
-					</c:forEach>
-					</div>
+<%-- 					<c:if test="${fn:length(noticeList) == 0}"> --%>
+<!-- 						<div id="notice_empty" class="box box_empty">	공지 리스트 추가 시 empty div hidden 처리 -->
+<!-- 							<div class="icon_notice"><i class="fas fa-seedling"></i></div> -->
+<!-- 							<div class="txt_notice">아직 작성된 공지사항이 없어요.</div> -->
+<!-- 							<div class="txt_sub">앞으로 좋은 소식들만 전달되기 바랍니다!</div> -->
+<!-- 						</div> -->
+<%-- 					</c:if> --%>
+<!-- 					<div id="list_notice_content"> -->
+<%-- 					<c:forEach var="noti" items="${noticeList}"> --%>
+<!-- 						<div class="box box_list_noti"> -->
+<!-- 							<div class="head_noti"> -->
+<!-- 								<div> -->
+<!-- 									<div class="img_profile"> -->
+<%-- 										<img src="${serverPath }/${noti.emp_profile}" alt="profile"> --%>
+<!-- 									</div> -->
+<!-- 									<div> -->
+<%-- 										<div class="txt_name">${noti.emp_name}</div> --%>
+<%-- 										<div class="time_notice">${noti.createDate.toLocaleString().substring(0,10)} · ${noti.createDate.toLocaleString().substring(10,18) }</div> --%>
+<!-- 									</div> -->
+<!-- 								</div> -->
+<%-- 								<button id="noti_${noti.seq }" class="btn_noti hidden"> --%>
+<!-- 									<div class="img_trash"><i class="fas fa-trash-alt"></i></div> -->
+<!-- 								</button> -->
+<!-- 							</div> -->
+<%-- 							<div class="txt_noti">${noti.contents }</div> --%>
+<!-- 						</div> -->
+<%-- 					</c:forEach> --%>
+<!-- 					</div> -->
 				</div>
 				
 				<!-- 할 일 리스트 -->
-				<div id="list_work" class="hidden">
-					<c:if test="${fn:length(worktodoList) == 0}">
-						<div id="work_empty" class="box box_empty">	<!-- 할 일 리스트 추가 시 empty div hidden 처리 -->
-							<div class="icon_work"><i class="fas fa-child"></i></i></div>
-							<div class="txt_work">새로운 할 일이 없습니다.</div>
-							<div class="txt_sub">이승백님에게 할 일이 생기면 여기서 알려드릴게요.</div>	<!-- user 이름 -->
-						</div>
-					</c:if>
+<!-- 				<div id="list_work" class="hidden"> -->
+<%-- 					<c:if test="${fn:length(worktodoList) == 0}"> --%>
+<!-- 						<div id="work_empty" class="box box_empty">	할 일 리스트 추가 시 empty div hidden 처리 -->
+<!-- 							<div class="icon_work"><i class="fas fa-child"></i></i></div> -->
+<!-- 							<div class="txt_work">새로운 할 일이 없습니다.</div> -->
+<!-- 							<div class="txt_sub">할 일이 생기면 여기서 알려드릴게요.</div>	user 이름 -->
+<!-- 						</div> -->
+<%-- 					</c:if> --%>
 					
-					<c:forEach var="worktodo" items="${worktodoList}">
+<%-- 					<c:forEach var="worktodo" items="${worktodoList}"> --%>
 					
-						<div class="box box_list_worktodo" onclick="location.href='${cpath }/workFlow/${login.emp_dept}'">
+<%-- 						<div class="box box_list_worktodo" onclick="location.href='${cpath }/workFlow/${login.emp_dept}'"> --%>
 						
-							<c:if test="${worktodo.table_name eq 'EQUI_REQ_TABLE' }">
-								<div class="head_worktodo">
-									<div>
-										<div class="img_profile">
-											<img src="${serverPath }/${worktodo.emp_profile}">
-										</div>
-										<div>
-											<div class="txt_name">
-											작성 요청${worktodo.req_field == '연차 신청' ? '(연차)' : '(비품)'}
-											</div>
-											<div class="time_worktodo">${worktodo.req_date }</div>
-										</div>
-									</div>
-										<div class="txt_go">해당 페이지로 이동</div>
-								</div>
-								<div class="txt_worktodo">${worktodo.req_content }</div>
-							</c:if>
+<%-- 							<c:if test="${worktodo.table_name eq 'EQUI_REQ_TABLE' }"> --%>
+<!-- 								<div class="head_worktodo"> -->
+<!-- 									<div> -->
+<!-- 										<div class="img_profile"> -->
+<%-- 											<img src="${serverPath }/${worktodo.emp_profile}"> --%>
+<!-- 										</div> -->
+<!-- 										<div> -->
+<!-- 											<div class="txt_name"> -->
+<%-- 											작성 요청${worktodo.req_field == '연차 신청' ? '(연차)' : '(비품)'} --%>
+<!-- 											</div> -->
+<%-- 											<div class="time_worktodo">${worktodo.req_date }</div> --%>
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 										<div class="txt_go">해당 페이지로 이동</div> -->
+<!-- 								</div> -->
+<%-- 								<div class="txt_worktodo">${worktodo.req_content }</div> --%>
+<%-- 							</c:if> --%>
 							
-							<c:if test="${worktodo.table_name eq 'EQUIPMENT_TABLE' }">
-								<div class="head_worktodo" onclick="location.href='${cpath }/workFlow/${login.emp_dept}'">
-									<div>
-										<div class="img_profile">
-											<img src="${serverPath }/${worktodo.emp_profile}">
-										</div>
-										<div>
-											<div class="txt_name">승인 요청 - 비품 신청</div>
-											<div class="time_worktodo">${worktodo.req_date }</div>
-										</div>
-									</div>
-									<div class="txt_go">해당 페이지로 이동</div>
-								</div>
-							</c:if>
+<%-- 							<c:if test="${worktodo.table_name eq 'EQUIPMENT_TABLE' }"> --%>
+<%-- 								<div class="head_worktodo" onclick="location.href='${cpath }/workFlow/${login.emp_dept}'"> --%>
+<!-- 									<div> -->
+<!-- 										<div class="img_profile"> -->
+<%-- 											<img src="${serverPath }/${worktodo.emp_profile}"> --%>
+<!-- 										</div> -->
+<!-- 										<div> -->
+<!-- 											<div class="txt_name">승인 요청 - 비품 신청</div> -->
+<%-- 											<div class="time_worktodo">${worktodo.req_date }</div> --%>
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="txt_go">해당 페이지로 이동</div> -->
+<!-- 								</div> -->
+<%-- 							</c:if> --%>
 							
-							<c:if test="${worktodo.table_name eq 'ANNUAL_TABLE' }">
-								<div class="head_worktodo" onclick="location.href='${cpath }/workFlow/${login.emp_dept}'">
-									<div>
-										<div class="img_profile">
-											<img src="${serverPath }/${worktodo.emp_profile}">
-										</div>
-										<div>
-											<div class="txt_name">승인 요청 - 연차 신청</div>
-											<div class="time_worktodo">${worktodo.req_date }</div>
-										</div>
-									</div>
-									<div class="txt_go">해당 페이지로 이동</div>
-								</div>
-							</c:if>
+<%-- 							<c:if test="${worktodo.table_name eq 'ANNUAL_TABLE' }"> --%>
+<%-- 								<div class="head_worktodo" onclick="location.href='${cpath }/workFlow/${login.emp_dept}'"> --%>
+<!-- 									<div> -->
+<!-- 										<div class="img_profile"> -->
+<%-- 											<img src="${serverPath }/${worktodo.emp_profile}"> --%>
+<!-- 										</div> -->
+<!-- 										<div> -->
+<!-- 											<div class="txt_name">승인 요청 - 연차 신청</div> -->
+<%-- 											<div class="time_worktodo">${worktodo.req_date }</div> --%>
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="txt_go">해당 페이지로 이동</div> -->
+<!-- 								</div> -->
+<%-- 							</c:if> --%>
 							
-						</div>
-					</c:forEach>
-				</div>
+<!-- 						</div> -->
+<%-- 					</c:forEach> --%>
+<!-- 				</div> -->
 			</div>
 			
 			<div class="right-side">

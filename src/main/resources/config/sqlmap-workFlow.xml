@@ -19,7 +19,7 @@
 	</insert> 
 	
 	<insert id="insertReqEqui" parameterType="ReqeustDTO">
-		insert into EQUI_REQ_TABLE ( SENDER,RECIPIENT,REQ_CONTENT,REQ_FIELD,SENDER_NUM,RECIPIENT_NUM)
+		insert into equi_req_table ( sender,recipient,req_content,req_field,sender_num,recipient_num)
 			values( #{sender},#{recipient},#{req_content},#{req_field},#{sender_num},${recipient_num})
 	</insert>
 	
@@ -30,16 +30,14 @@
 	</select>
 	
 	<insert id="insertAnnual" parameterType="WflowAnnualDTO">
-		Insert into ANNUAL_TABLE 
-		(SENDER_NUM,PERIOD,EXPECTED_DATE,EMP_NAME,EMP_DEPT,SENDER,RECIPIENT,RECIPIENT_NUM) 
+		insert into annual_table 
+		(sender_num,period,expected_date,emp_name,emp_dept,sender,recipient,recipient_num) 
 			values (#{sender_num},#{period},#{expected_date},#{emp_name}
 			,#{emp_dept},#{sender},#{recipient},${recipient_num})
 	</insert>
 	
 	<select id="selectStorage" parameterType="int" resultType="storage">
-		select S.* ,E.emp_name , e.emp_profile,e.emp_dept from storage_table S join employee_table E
-			on S.sender_num = E.emp_num where s.recipient_num = #{emp_num}
-
+		select s.* ,e.emp_name , e.emp_profile,e.emp_dept from storage_table s join employee_table e on s.sender_num = e.emp_num where s.recipient_num = #{emp_num}
 	</select>
 	
 	<select id="selectEquiList" resultType="WFlowEquiDTO">
@@ -47,30 +45,30 @@
 	</select>
 	
 	<select id="selectAnnList" resultType="WflowAnnualDTO">
-		select * from ANNUAL_TABLE order by req_date desc
+		select * from annual_table order by req_date desc
 	</select>
 	
 	<update id="updateApp" parameterType="hashmap">
 		update (select * from storage_table 
-		where sender_num = #{senN} and req_date = #{reqD} and kinds =#{kinds})A
-		set A.APPROVAL = '완료' , A.command = #{command}
+		where sender_num = #{senn} and req_date = #{reqd} and kinds =#{kinds})a
+		set a.approval = '완료' , a.command = #{command}
 	</update>
 	
 	<select id="selectCCount" resultType="int">
-		select count(*) from storage_table where APPROVAL = '미승인' or APPROVAL='요청' and recipient_num = #{emp_num}
+		select count(*) from storage_table where approval = '미승인' or approval='요청' and recipient_num = #{emp_num}
 	</select>
 	
 	<update id="updateApproval" parameterType="hashmap">
 <!-- 		update equipment_table set APPROVAL = '완료' where sender_num = #{senN} and kinds =#{kinds} -->
 <!-- 			and req_date = #{reqD}  -->
 			
-			update equipment_table set APPROVAL = '완료' where sender_num =#{senN}
-				and kinds =#{kinds} and req_date =#{reqD} 
+			update equipment_table set approval = '완료' where sender_num =#{senn}
+				and kinds =#{kinds} and req_date =#{reqd} 
 	</update>
 	
 	<update id="updateApprovalanu" parameterType="hashmap">
-		update annual_table set APPROVAL = '완료' where sender_num = #{senN} and kinds = #{kinds}
-			and req_date =#{reqD} 
+		update annual_table set approval = '완료' where sender_num = #{senn} and kinds = #{kinds}
+			and req_date =#{reqd} 
 	</update>
 	
 

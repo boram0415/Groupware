@@ -53,11 +53,11 @@ public class MainController {
 	@GetMapping("")
 	public String main(HttpSession session) {
 		
-		List<NoticeDTO> noticeList = ns.getNoticeList();
-		session.setAttribute("noticeList", noticeList);
+//		List<NoticeDTO> noticeList = ns.getNoticeList();
+		session.setAttribute("noticeList", 0);
 		
-		List<WorktodoDTO> worktodoList = ws.getWorktodoList(session);
-		session.setAttribute("worktodoList", worktodoList);
+//		List<WorktodoDTO> worktodoList = ws.getWorktodoList(session);
+		session.setAttribute("worktodoList", 0);
 		
 		return "home"; 
 	}
@@ -143,7 +143,7 @@ public class MainController {
 	public void workFlow(Model model, HttpSession session) {
 		
 		int emp_num = ((EmployeeDTO) session.getAttribute("login")).getEmp_num();
-//		System.out.println(emp_num);
+		System.out.println("emp_num : " + emp_num);
 		List<storegeDTO> allList = workDAO.selectStorage(emp_num);
 		List<storegeDTO> equiList = workDAO.selectEquiList();
 		List<storegeDTO> annList= workDAO.selectAnnList();

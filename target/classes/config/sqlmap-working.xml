@@ -24,12 +24,12 @@
 
 	<!-- 요번주 근무 총합 -->
 	<select id="allWork" resultType="String" parameterType="hashmap">
-		select sum(total_working) from working_info where emp_num=#{emp_num} and today_date between #{firstStart} and #{lastStart}
+		select sum(total_working) from working_info where emp_num=#{emp_num} and today_date between #{firststart} and #{laststart}
 	</select>
 	
 	<!-- 이번주 스케줄 리스트로 뽑아옴 -->
 	<select id="getSchedule" resultType="work" parameterType="hashmap">
-		select * from working_info where emp_num=#{emp_num} and today_date between #{firstStart} and #{lastStart}
+		select * from working_info where emp_num=#{emp_num} and today_date between #{firststart} and #{laststart}
 	</select>
 	
 	<select id="getTeamCount" resultType="String"> <!-- 자신의팀 총인원수 뽑는거 -->
@@ -38,11 +38,11 @@
 	
 	<!-- 자신의 팀(EX인사팀) 구성원들의 한달 스케줄  -->
 	<select id="getWorkOff" resultType="wh" parameterType="dat">
-		select E.emp_name,E.emp_num,E.emp_dept,W.working_time,W.off_work,W.today_date from employee_table E, working_info W
-	   		where E.emp_num = W.emp_num and E.emp_dept='${empdept}' and W.today_date between '${year},${month},${firstDay}' and '${year},${month},${lastDay}' order by w.today_date,e.emp_name
+		select e.emp_name,e.emp_num,e.emp_dept,w.working_time,w.off_work,w.today_date from employee_table e, working_info w
+	   		where e.emp_num = w.emp_num and e.emp_dept='${empdept}' and w.today_date between '${year},${month},${firstday}' and '${year},${month},${lastday}' order by w.today_date,e.emp_name
 	</select>
 	<select id="allEx" resultType="String" parameterType="hashmap">
-		select sum(excess_allow) from working_info where emp_num=#{emp_num} and today_date between #{firstStart} and #{lastStart}
+		select sum(excess_allow) from working_info where emp_num=#{emp_num} and today_date between #{firststart} and #{laststart}
 	</select>
 		
 </mapper>

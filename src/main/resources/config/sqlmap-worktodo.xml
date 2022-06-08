@@ -7,18 +7,18 @@
 	
 	
 	<select id="selectWorktodoList" parameterType="int" resultType="worktodo">
-		select T.table_name, A.sender, A.sender_num, E.emp_profile, A.recipient, A.recipient_num, A.req_date, null as req_field, null as req_content from annual_table A, employee_table E, tabs T
-		    where A.approval = '미승인' and A.sender_num = E.emp_num and T.table_name = 'ANNUAL_TABLE' and A.recipient_num = #{num}
+		select t.table_name, a.sender, a.sender_num, e.emp_profile, a.recipient, a.recipient_num, a.req_date, null as req_field, null as req_content from annual_table a, employee_table e, tabs t
+		    where a.approval = '미승인' and a.sender_num = e.emp_num and t.table_name = 'annual_table' and a.recipient_num = #{num}
 		    
-		UNION ALL
+		union all
 		
-		select T.table_name, Q.sender, Q.sender_num, E.emp_profile, Q.recipient, Q.recipient_num, Q.req_date, null as req_field, null as req_content from equipment_table Q, employee_table E, tabs T
-		    where Q.approval = '미승인' and Q.sender_num = E.emp_num and T.table_name = 'EQUIPMENT_TABLE' and Q.recipient_num = #{num}
+		select t.table_name, q.sender, q.sender_num, e.emp_profile, q.recipient, q.recipient_num, q.req_date, null as req_field, null as req_content from equipment_table q, employee_table e, tabs t
+		    where q.approval = '미승인' and q.sender_num = e.emp_num and t.table_name = 'equipment_table' and q.recipient_num = #{num}
 		
-		UNION ALL
+		union all
 		
-		select T.table_name, R.sender, R.sender_num, E.emp_profile, R.recipient, R.recipient_num, R.req_date, R.req_field, R.req_content from equi_req_table R, employee_table E, tabs T
-		    where write_check = 0 and R.sender_num = E.emp_num and T.table_name = 'EQUI_REQ_TABLE' and R.recipient_num = #{num}
+		select t.table_name, r.sender, r.sender_num, e.emp_profile, r.recipient, r.recipient_num, r.req_date, r.req_field, r.req_content from equi_req_table r, employee_table e, tabs t
+		    where write_check = 0 and r.sender_num = e.emp_num and t.table_name = 'equi_req_table' and r.recipient_num = #{num}
 		
 		order by req_date
 	</select>
