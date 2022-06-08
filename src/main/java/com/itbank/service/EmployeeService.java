@@ -126,12 +126,11 @@ public class EmployeeService {
 		return dto;
 	}
 	
-
-	
 		public int MemberLogin(EmployeeDTO emp, HttpSession session) {
 		
 		emp.setEmp_pw(Hash.getHash(emp.getEmp_pw()));
 		
+		try {
 		EmployeeDTO memberCheck = dao.MemberLogin(emp); 
 		List<HashMap<String, Object>> deptList = subDao.selectDeptList();
 		// 남은 휴가 일수와 365일 기준 남은 일자 계산해서 넣기 
@@ -141,14 +140,18 @@ public class EmployeeService {
 			session.setAttribute("login", memberCheck);
 			session.setAttribute("departList", deptList);
 			session.setAttribute("vacNum", vacNum.getAnnual_leave());
-			session.setAttribute("RemainingNum", Remaining());
+			session.setAttribute("RemainingNum", "7");
 			return 1 ; 
 		} 
 		
-	
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("error!!");
+		}
 		
 		return 0;
 	}
+		
 	
 	// 프로필 모달의 카테고리중 휴가에 쓰인 데이터 (4월5일 변경 보람)
 		public int Remaining() {

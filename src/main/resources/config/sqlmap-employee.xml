@@ -78,14 +78,12 @@
 	</update>
 	
 	<select id="selectvacationNum" resultType="vacation" parameterType="int">
-		select annual_leave from vacation_TABLE 
+		select annual_leave from vacation_table 
 				where emp_num = #{emp_num}
 	</select>
 	
 	<select id="RemainingVaction" resultType="int" parameterType="string">
-		select
-   			365 - (to_date(#{getTime}, 'yymmdd') - to_date('210101', 'yymmdd')+1)
-		from dual
+		select 365 - (to_date(#{getTime}, 'yymmdd') - to_date('210101', 'yymmdd')+1) from dual
 	</select>
 	
 	<select id="getHelloTeam" resultType="String">
