@@ -1,11 +1,8 @@
 package com.itbank.controller;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-
-import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,12 +31,7 @@ public class CompanyAjaxController {
 	
 	@GetMapping(value="company1", produces = "application/json;charset=utf8")
 	public String companyList() throws JsonProcessingException {
-		
 		List<HashMap<String, Object>> list = cs.getCompany();
-		
-		//for(HashMap<String, Object> map : list) {
-		//	System.out.println(map);
-		//}
 		String json ="";
 		json = mapper.writeValueAsString(list);
 		return json;
@@ -52,21 +44,17 @@ public class CompanyAjaxController {
 	
 	@PostMapping(value="upload", produces = "application/text;charset=utf8")
 	public String upload(MultipartFile file ) throws IllegalStateException, IOException, SftpException, JSchException {
-//		System.out.println("파일이름 : " + file);
 		fileName = file.getOriginalFilename();
-//		System.out.println(file.getSize());
-		
-		BufferedImage image = ImageIO.read(file.getInputStream());
-		
-		int row = us.uploadFile(file);
-		
+//		BufferedImage image = ImageIO.read(file.getInputStream());
+//		int row = us.uploadFile(file);
+		us.uploadFile(file);
 		return "/upload/" + file.getOriginalFilename();
 	}
 	
 	@GetMapping(value="updateImg",produces = "application/text;charset=utf8" )
 	public void updateImg() {
-//		System.out.println("파일이름 : " + fileName);
-		int row = cs.updateFileName(fileName);
+//		int row = cs.updateFileName(fileName);
+		cs.updateFileName(fileName);
 	}
 	
 	@GetMapping(value="callImg",produces = "application/text;charset=utf8")

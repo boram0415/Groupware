@@ -1537,7 +1537,7 @@ var workTime;
 	    		dupbtnol.className = 'dup-btn-ol';
 	    		const profilepic = document.createElement('div');
 	    		profilepic.className = 'profile-pic';
-	    		profilepic.style.background = "url('http://192.168.0.173/" + arrProfile[i] + "'";
+	    		profilepic.style.background = "url('http://121.174.99.113/" + arrProfile[i] + "'";
 	    		profilepic.style.backgroundSize = '100% 100%';
 	    		
 	    		//profilepic.style.backgroundColor = 'red';

@@ -8,6 +8,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ import com.itbank.sub.VacationDTO;
 
 @Service
 public class EmployeeService {
+	
+	private static Logger logger = LoggerFactory.getLogger( EmployeeService.class );
 	
 	@Autowired
 	private EmployeeDAO dao;
@@ -146,12 +150,13 @@ public class EmployeeService {
 		
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("error!!");
+			logger.warn("ERROR : {} ",e);
+			return 0;
 		}
 		
 		return 0;
-	}
 		
+	}		
 	
 	// 프로필 모달의 카테고리중 휴가에 쓰인 데이터 (4월5일 변경 보람)
 		public int Remaining() {
@@ -168,9 +173,7 @@ public class EmployeeService {
 	public int hrInsert(EmployeeDTO emp, HttpServletRequest req) {
 		
 		int empInsert = dao.memberInsert(emp);
-		
 		EmployeeDTO memberList = dao.selectMember(emp.getEmp_num());
-		
 		HttpSession session =  req.getSession();
 		session.setAttribute("login", memberList);
 		

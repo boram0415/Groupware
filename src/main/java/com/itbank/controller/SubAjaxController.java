@@ -20,7 +20,7 @@ import com.itbank.employee.EmployeeDTO;
 import com.itbank.notice.NoticeDTO;
 import com.itbank.service.NoticeService;
 import com.itbank.service.SubService;
-
+ 
 @RestController
 public class SubAjaxController {
 	

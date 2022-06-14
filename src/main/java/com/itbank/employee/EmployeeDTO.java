@@ -48,7 +48,7 @@ public class EmployeeDTO {
 	
 	private int seq, emp_num, emp_age, emp_del, emp_head, emp_admin, emp_sala;
 	private String emp_name, emp_gender, emp_introduce, emp_birthnum, emp_pnum, emp_addr, emp_bank, emp_banknum, 
-					 emp_profile, emp_delinfo, dept_name, pos_name , emp_email , emp_pw ,emp_info_change , emp_priorNum, emp_dept
+					 emp_profile, emp_delinfo, dept_name, pos_name , emp_email , emp_pw ,emp_info_change , emp_priornum, emp_dept
 					,emp_pos;
 	private Date start_day, end_day;
 	
@@ -63,10 +63,10 @@ public class EmployeeDTO {
 	}
 	
 	public String getEmp_priorNum() {
-		return emp_priorNum;
+		return emp_priornum;
 	}
-	public void setEmp_priorNum(String emp_priorNum) {
-		this.emp_priorNum = emp_priorNum;
+	public void setEmp_priorNum(String emp_priornum) {
+		this.emp_priornum = emp_priornum;
 	}
 	public String getEmp_info_change() {
 		return emp_info_change;

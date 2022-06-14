@@ -46,7 +46,7 @@
 <!-- <div id="root" onscroll="SetDivPosition()"> -->
 <div id="root">
 
-	<c:set var="serverPath" value="http://192.168.0.173" />
+	<c:set var="serverPath" value="http://121.174.99.113" />
 
     <header id="gnb">
     
@@ -275,8 +275,6 @@
 		<!-- 모달 시작  -->
 		<%@ include file="modal.jsp"%>
 <%--     	<jsp:include page="modal.jsp"></jsp:include> --%>
-    	
-    	
     	
     </header>
                             

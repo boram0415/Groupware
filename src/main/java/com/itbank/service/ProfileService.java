@@ -7,6 +7,8 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,20 +23,23 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import com.jcraft.jsch.SftpException;
 
+
 @Service
 public class ProfileService {
 	
-	private final String serverIP = "192.168.0.173";   // ���ε� ������ ip Ȥ�� dns name
-	   private final int serverPort = 22;               // SSH Protocol Port
-	   private final String serverUser = "root";         // Linux User
-	   private final String serverPass = "1";            // password
-	   private ChannelSftp chSftp = null;
+	private static final Logger logger = LoggerFactory.getLogger(ProfileService.class);
+	
+   private final String serverIP = "121.174.99.113";   // ���ε� ������ ip Ȥ�� dns name
+   private final int serverPort = 22;               // SSH Protocol Port
+   private final String serverUser = "root";         // Linux User
+   private final String serverPass = "dufcme90!!";            // password
+   private ChannelSftp chSftp = null;
 
 	@Autowired
 	private EmployeeDAO emp_dao;
 
 
-
+	
 	public String uploadFile(HttpServletRequest req) throws IllegalStateException, IOException, JSchException, SftpException {
 
 		// ajax로 넘어온 파일객체
@@ -54,13 +59,12 @@ public class ProfileService {
 		dto.setEmp_num(empNumber);
 
 		// DB에 profile 경로 저장
-		int fileupCheck = emp_dao.fileNameupload(dto);
-
+		emp_dao.fileNameupload(dto);
 		HttpSession session = req.getSession();
-		
 		EmployeeDTO list = (EmployeeDTO) session.getAttribute("login");
 		
 		list.setEmp_profile(fileName);
+		logger.info("[ FILE NAME UPLOAD SECCESS ]");
 
 		session.setAttribute("login", list);
 
@@ -81,7 +85,7 @@ public class ProfileService {
       
       File tmp = new File(fileName);      // �������� ������ ������ �ӽ÷� ����
       file.transferTo(tmp);                           // ���ε� ������ File��ü�� ��ȯ
-      
+      logger.info(" [ FILE UPLOAD SECCESS! ]");
       FileInputStream fis = new FileInputStream(tmp);         // tmp�� �о �������� ���� ��Ʈ��
       chSftp.cd("/var/www/html");                        // var/www/html : apache�� �⺻ ���
       chSftp.put(fis, fileName);         // ��Ʈ���� �̸��� �����Ͽ� ���ε�

@@ -45,7 +45,7 @@ const convertEmpJsonToUl = function(json) {
 	for(let i = 0; i < json.length; i++) {
 		const img = document.createElement('div');
 		img.className = 'img_profile';
-		img.style.backgroundImage = "url('http://192.168.0.173/"+ json[i].emp_profile + "')";
+		img.style.backgroundImage = "url('http://121.174.99.113/"+ json[i].emp_profile + "')";
 		
 		const profile = document.createElement('div');
 		profile.className = 'box_profile';

@@ -423,7 +423,7 @@
 									<input class="adminNum" value="${list.emp_num}" type="hidden">
 									<span class="apply_img"> 
 									<!-- 이미지 나오게 만들기1 -->
-									<img src="http://192.168.0.173/${list.emp_profile}" alt="">
+									<img src="http://121.174.99.113/${list.emp_profile}" alt="">
 									</span> <span class="hXmmql">${list.emp_name}</span> 
 									<span class="ap_admin">관리자</span>
 									<div class="fp_con${num.count} ic_hidden1">
@@ -623,7 +623,7 @@
 									<input class="adminNum" value="${list.emp_num}" type="hidden">
 									<span class="apply_img"> 
 									<!-- 이미지 나오게 만들기2 -->
-										<img src="http://192.168.0.173/${list.emp_profile}" alt="">
+										<img src="http://121.174.99.113/${list.emp_profile}" alt="">
 									</span> <span class="hXmmql">${list.emp_name}</span> <span
 										class="ap_admin">관리자</span>
 									<div class="fp_con${num.count} ic_hidden1">

@@ -126,8 +126,8 @@
 <%-- 								<div class="alist_child" id="apply_Alist${num.count}"> --%>
 <%-- 									<input class="adminNum" value="${list.emp_num}" type="hidden"> --%>
 									<span class="apply_img"> 
-<%-- 									<img src="http://192.168.0.173/${list.emp_profile}" alt=""> --%>
-<%-- 									<img src="http://192.168.0.173/${list.emp_profile}" alt=""> --%>
+<%-- 									<img src="http://121.174.99.113/${list.emp_profile}" alt=""> --%>
+<%-- 									<img src="http://121.174.99.113/${list.emp_profile}" alt=""> --%>
 									</span> <span class="hXmmql">김보람</span> 
 									<span class="ap_admin">개발팀</span>
 								</div>
@@ -140,7 +140,7 @@
 										<i class="fas fa-check"></i>
 									</div>
 
-<%-- 									<img src="http://192.168.0.173/${list.emp_profile}" alt=""> --%>
+<%-- 									<img src="http://121.174.99.113/${list.emp_profile}" alt=""> --%>
 								<div class="chcommand">
 
 									<div class="apply_img1"> 

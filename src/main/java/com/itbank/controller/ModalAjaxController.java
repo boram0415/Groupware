@@ -37,23 +37,17 @@ public class ModalAjaxController {
 	public String upload(HttpServletRequest req) throws IllegalStateException, IOException, JSchException, SftpException {
 		
 		String resultMsg = ps.uploadFile(req);
-		
 		return  resultMsg; 
 		
 	}
 	
-	@PostMapping(value = "hr_insert" , 
-			consumes = "application/json;chatset=utf-8", 
-			produces = "application/text;chatset=utf-8")
+	@PostMapping(value = "hr_insert" , consumes = "application/json;chatset=utf-8", produces = "application/text;chatset=utf-8")
 	public ResponseEntity hrInsert(@RequestBody EmployeeDTO emp ,HttpServletRequest req) throws JsonProcessingException {
 		
 		int empInsert = es.hrInsert(emp,req);
-		
 		if(empInsert == 1) {
 			EmployeeDTO dto = es.getEmployee(emp.getEmp_num());
-			System.out.println(dto.getDept_name());
 			String data = mapper.writeValueAsString(dto);
-			
 			HttpHeaders responseHeaders = new HttpHeaders();
 			responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 			
@@ -63,11 +57,8 @@ public class ModalAjaxController {
 		
 	}
 	
-	@PostMapping(value = "deInfo_insert" , 
-			consumes = "application/json;chatset=utf-8", 
-			produces = "application/text;chatset=utf-8")
+	@PostMapping(value = "deInfo_insert" ,  consumes = "application/json;chatset=utf-8", produces = "application/text;chatset=utf-8")
 	public ResponseEntity deInfoInsert(@RequestBody EmployeeDTO emp ,HttpServletRequest req) throws JsonProcessingException {
-		System.out.println(emp.getEmp_email());
 		int empDe_Insert = es.deInfoInsert(emp,req);
 		
 		if(empDe_Insert == 1) {

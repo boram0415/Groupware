@@ -194,7 +194,7 @@
 								<div class="chcommand">
 
 									<div class="apply_img1"> 
-									<img src="http://192.168.0.173/${login.emp_profile}" alt="">
+									<img src="http://121.174.99.113/${login.emp_profile}" alt="">
 									</div>
 									
 									<div class="">

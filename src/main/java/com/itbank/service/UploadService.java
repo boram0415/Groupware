@@ -4,22 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import com.itbank.employee.EmployeeDAO;
-import com.itbank.employee.EmployeeDTO;
 
 
 @Service
 public class UploadService {
 	
-	private final String uploadPath = "D:\\upload";
+	private final String uploadPath = "/upload";
 	private String[] extArr = {"jpg", "png", "jpeg", "bmp", "gif"};
 	
 	public UploadService() {
@@ -43,8 +35,6 @@ public class UploadService {
 	public int uploadFile(MultipartFile file) throws IllegalStateException, IOException {
 		
 		File f = new File(uploadPath, file.getOriginalFilename());
-//		System.out.println(uploadPath);
-//		System.out.println(isImgFile(file.getOriginalFilename()));
 		if(isImgFile(file.getOriginalFilename())) {
 			file.transferTo(f);
 		}

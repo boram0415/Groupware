@@ -1748,7 +1748,7 @@
 		   		.then(text =>{
 		   			console.log('불러온 text이름 : ' + text);
 		   			var img = document.getElementById('backImg');
-		   			img.style.backgroundImage = "url('http://192.168.0.173/" + text + "'" ;
+		   			img.style.backgroundImage = "url('http://121.174.99.113/" + text + "'" ;
 		   			img.style.backgroundSize = "100% 100%";
 		   			
 //  		   			img.style.width = 'inherit';
@@ -1771,7 +1771,7 @@
    		.then(text =>{
    			console.log('불러온 text이름 : ' + text);
    			var img = document.getElementById('backImg');
-   			img.style.backgroundImage = "url('http://192.168.0.173/" + text + "'" ;
+   			img.style.backgroundImage = "url('http://121.174.99.113/" + text + "'" ;
    			img.style.backgroundSize = "100% 100%";
    			
    		});

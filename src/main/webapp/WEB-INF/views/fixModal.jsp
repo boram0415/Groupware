@@ -101,7 +101,7 @@
 						<input class="adminNum" value="${list.emp_num}" type="hidden">
 						<div class="">
 							<!-- 이미지 나오게 만들기1 -->
-							<span class="fixs_img"> <img src="http://192.168.0.173/${list.emp_profile}" alt="">
+							<span class="fixs_img"> <img src="http://121.174.99.113/${list.emp_profile}" alt="">
 							</span>
 						</div>
 						<div class="">
