@@ -716,13 +716,13 @@
 
                                         </div>
 
-                                        <!-- 조직 클릭스 스르륵 열리는 창 -->
+                                        <!-- 조직 클릭 시 스르륵 열리는 창 -->
                                         <div class="depart_container">
                                             <c:forEach var="deptList" items="${departList}">
-                                                <div class="depart_box" id="${deptList['DEPT_NO']}">
+                                                <div class="depart_box" id="${deptList['dept_no']}">
                                                     <div class="item1">
                                                         <div class="itam_in" id="itam_num">
-                                                            <i class="far fa-calendar-check"></i>${deptList['DEPT_NAME']}
+                                                            <i class="far fa-calendar-check"></i>${deptList['dept_name']}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1351,7 +1351,7 @@
                             timeout: 600000,
                             success: function (data) {
                                 console.log("SUCCESS : ", data);
-                                $(".profileImg").attr("src", "http://192.168.0.173/" + data);
+                                $(".profileImg").attr("src", "http://121.174.99.113/" + data);
 
                                 if (data == '1') {
                                     $('#copy_hidden3').attr("id", "");
